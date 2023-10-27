@@ -8,3 +8,6 @@
  
   - 2023-10-25 worked for 3h
   - started learning canvas
+
+  - 2023-10-25 worked for 2h
+  - learning canvas
