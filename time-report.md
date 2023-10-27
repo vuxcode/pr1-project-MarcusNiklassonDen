@@ -6,3 +6,6 @@ For example:
 
 - 2022-10-24 18:00 Worked for 1 hour.
   - *List the things you have done.*
+ 
+  - 2023-10-25 worked for 3h
+  - started learning canvas
