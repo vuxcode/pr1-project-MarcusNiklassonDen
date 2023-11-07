@@ -12,7 +12,7 @@
   - 2023-10-27 worked for 2h
   - learning canvas
 
-    2023-11-07 worked for 5h
-    learning canvas, wrote event listeners and shapes
+  - 2023-11-07 worked for 5h
+  - learning canvas, wrote event listeners and shapes
 
     
