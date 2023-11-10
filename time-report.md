@@ -15,4 +15,7 @@
   - 2023-11-07 worked for 5h
   - learning canvas, wrote event listeners and shapes
 
+  - 2023-11-10 worked for 30min
+  - learning canvas, tryed to fix the problem with the stroke not updating as it should. added some buttons
+
     
