@@ -10,9 +10,14 @@ ctx.lineCap = "round" //sets end to be round
 ctx.lineWidth = 10; //sets width of stroke
 
 var isDrawing = false; // sets variable isDrawning to boolian false
-var X = 0; //sets x value to undefined
-var Y = 0; //sets y value to undefined
+var X  ; //storing x value
+var Y ; // storing y value
+var offsetX; //storing offsetX
+var offsetY; //storing offsetY
+var ctx //storing ctx
 
+
+// Drawing function
 function freeDrawing(free){
     if (!isDrawing) return;
 
@@ -23,14 +28,29 @@ function freeDrawing(free){
 
 }
 
+
+//Mouse Event Listeners
+window.addEventListener("mousemove", (free) =>{//listens if mouse  is moving
+    if (isDrawing) {
+        X = free.offsetX;// changes var X to free.offsetX (offsetX looks at where the mousepointer i in the x axis)
+        Y = free.offsetY;// changes var Y to free.offsetY (offsetY looks at where the mousepointer i in the y axis
+    }
+    
+
+});
+
 window.addEventListener("mousedown", (free) =>{//listens if mouse button is pressed and runs function freeDrawing
     isDrawing = true; // changes var isDrawing to true
     X = free.offsetX; // changes var X to free.offsetX (offsetX looks at where the mousepointer i in the x axis)
     Y = free.offsetY; // changes var Y to free.offsetY (offsetY looks at where the mousepointer i in the y axis
-
+    
 });
 
-window.addEventListener("mousemove", freeDrawing); // listening to mouse movment
+
+
+//window.addEventListener("mousemove", freeDrawing); // listening to mouse movment
+
+
 
 window.addEventListener("mouseup", (free) =>{ // listening if mouse button is relesed
     isDrawing = false // sets var isDrawing to false
