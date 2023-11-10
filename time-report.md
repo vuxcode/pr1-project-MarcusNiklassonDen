@@ -21,4 +21,7 @@
   - 2023-11-10 worked for 30min
   - learning canvas, tryed to fix the problem with the stroke not updating as it should and itroduced another bug, now it makes dots instead
 
+  - 2023-11-10 worked for ?min
+  - learning canvas, fixed the bugg with the dots, rewrote all functions and listers. its alot more comprehensible now.
+
     
