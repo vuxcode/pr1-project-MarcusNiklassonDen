@@ -24,4 +24,7 @@
   - 2023-11-10 worked for ?min
   - learning canvas, fixed the bugg with the dots, rewrote all functions and listers. its alot more comprehensible now.
 
+  - 2023-11-10 worked for 30min
+  - scripted buttons (not done yet)
+
     
