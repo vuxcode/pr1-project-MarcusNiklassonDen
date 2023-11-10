@@ -18,4 +18,7 @@
   - 2023-11-10 worked for 30min
   - learning canvas, tryed to fix the problem with the stroke not updating as it should. added some buttons
 
+  - 2023-11-10 worked for 30min
+  - learning canvas, tryed to fix the problem with the stroke not updating as it should and itroduced another bug, now it makes dots instead
+
     
