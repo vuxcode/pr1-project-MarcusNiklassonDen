@@ -16,6 +16,14 @@ var strokeStyle = "black";//stores the strokeStyle (color)
 var lineWidth = "10";//stores the lineWidth (width of stroke)
 
 
+//button varibles
+var buttonPen = document.getElementById("buttonPen").onclick = draw;
+//var buttonEraser = document.getElementById("buttonEraser").onclick = eraseFunction;
+var buttonSquare = document.getElementById("buttonSquare").onclick = startSquare;
+var buttonCircle = document.getElementById("buttonCircle").onclick = startCircle;
+//var buttonClear = document.getElementById("buttonClear").onclick = eraseAllFunction;
+//console.log(buttonPen)
+
 //sets the stroke atributes
 ctx.strokeStyle = strokeStyle; // sets color of stroke, refers to var strokeStyle
 ctx.lineCap = "round" //sets end to be round
@@ -54,15 +62,24 @@ window.addEventListener("mousedown", startDrawing);//Lisening to mousebutton is 
 window.addEventListener("mouseup", stopDrawing);//listening to mousebutton is released and runs stopDrawing function
 window.addEventListener("mousemove", draw);//listening if mouse is moving and runs draw function
 
-/*
-//SQUARE
-//fills a rectangle but needs user input to change the width/height.
-//needs button to activate
+// SQUARE Needs user input
+function startSquare (){
+    ctx.beginPath(); //starts square
+    ctx.fillStyle = strokeStyle; //color select. needs user input
+    ctx.fillRect(100, 100, 100, 100);
+    ctx.stroke();
 
-ctx.beginPath(); //starts square
-ctx.fillStyle = "hexCode or css"; //color select. needs user input
-ctx.fillRect(x cord, y cord, width, height);
-*/
+}
+
+//ARC Needs user input and something dosent work as it should
+function startCircle(){
+    ctx.beginPath(); //starts circle
+    ctx.arc(50, 50, 50, 50, Math.PI * 2);// creates circle. needs x(300) and y(500) cord from user, button and cords where to start (30).
+    ctx.strokeStyle;//color select
+    ctx.stroke(); // fill stroke
+}
+
+
 
 /*
 //LINE
@@ -74,13 +91,9 @@ ctx.strokeStyle = "cap";
 ctx.stroke();//fills line
 */
 
-/*
-//ARC
-ctx.beginPath(); //starts circle
-ctx.arc(x, y, 30, 0, Math.PI * 2);// creates circle. needs x(300) and y(500) cord from user, button and cords where to start (30).
-ctx.strokeStyle = "blue";//color select
-ctx.stroke(); // fill stroke
-*/
+
+
+
 
 
 
