@@ -27,4 +27,7 @@
   - 2023-11-10 worked for 30min
   - scripted buttons (not done yet)
 
+  - 2023-11-15 worked for 20min
+  - tried to make the buttons for different functions to work as they should
+
     
