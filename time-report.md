@@ -30,4 +30,9 @@
   - 2023-11-15 worked for 20min
   - tried to make the buttons for different functions to work as they should
 
+  - 2023-11-17 worked for a frustrating 2h
+  - aded a slider and a colorpicker. tried to conect these to lineWidth and strokeStyle varibles butt couldent figure i out.
+  - tried to fix the square button so it would disable the draw function, i managed to do so butt the draw function did not work after that so i deleted it.
+  - very frustrating session.
+
     
