@@ -12,8 +12,8 @@ var offsetX; //storing offsetX
 var offsetY; //storing offsetY
 var ctx //storing ctx
 var ctx = canvas.getContext("2d"); // dont really know what this dose but i guess it sets var ctx to be a 2d space?
-var strokeStyle = "black";//stores the strokeStyle (color)
-var lineWidth = "10";//stores the lineWidth (width of stroke)
+var strokeStyle = document.getElementById("colorPicker");//stores the strokeStyle (color)
+var lineWidth = 10;//stores the lineWidth (width of stroke)
 
 
 //button varibles
@@ -30,25 +30,30 @@ ctx.lineCap = "round" //sets end to be round
 ctx.lineWidth = lineWidth; //sets width of stroke, refers to var lineWidth
 
 
-
-
 // Function that states that isDrawing is set to true
 function startDrawing(){
     isDrawing = true;
+    
 }
 
 // Function that states that isDrawing is set to false and the "Stroke Path" dosent continiue to the next StartDrawing function
 function stopDrawing(){
-    isDrawing = false
+    isDrawing = false;
     ctx.beginPath();
 }
 
 //Function for Mouse drawing (free drawing)
 function draw(freeDraw){
+    window.addEventListener("mousedown", startDrawing);//Lisening to mousebutton is pressed down and runs startDrawing function
+    window.addEventListener("mouseup", stopDrawing);//listening to mousebutton is released and runs stopDrawing function
+    window.addEventListener("mousemove", draw);//listening if mouse is moving and runs draw function
     if (!isDrawing) return;// if isDrawing not true it runs the function again.
-    ctx.strokeStyle;// dont know if these are needed here or if it just needs the Style,lineCap,lineWidth from the top
+    
+    
+
+    ctx.strokeStyle = strokeStyle;// gets information from var strokeStyle
     ctx.lineCap;
-    ctx.lineWidth;
+    ctx.lineWidth = lineWidth;// gets information from var lineWidth
 
     
     ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//takes cordinates from freeDraw thattakes them from draw that takes them fom mousemove
@@ -58,12 +63,12 @@ function draw(freeDraw){
     
 }
 
-window.addEventListener("mousedown", startDrawing);//Lisening to mousebutton is pressed down and runs startDrawing function
-window.addEventListener("mouseup", stopDrawing);//listening to mousebutton is released and runs stopDrawing function
-window.addEventListener("mousemove", draw);//listening if mouse is moving and runs draw function
+        
+
 
 // SQUARE Needs user input
 function startSquare (){
+    stopDrawing
     ctx.beginPath(); //starts square
     ctx.fillStyle = strokeStyle; //color select. needs user input
     ctx.fillRect(100, 100, 100, 100);
@@ -73,10 +78,12 @@ function startSquare (){
 
 //ARC Needs user input and something dosent work as it should
 function startCircle(){
-    ctx.beginPath(); //starts circle
-    ctx.arc(50, 50, 50, 50, Math.PI * 2);// creates circle. needs x(300) and y(500) cord from user, button and cords where to start (30).
-    ctx.strokeStyle;//color select
+    ctx.arc(400, 400, 100, 100, Math.PI*2);// creates circle. needs x(300) and y(500) cord from user, button and cords where to start (30).
     ctx.stroke(); // fill stroke
+    ctx.beginPath(); //starts circle
+    
+    ctx.strokeStyle;//color select
+    
 }
 
 
