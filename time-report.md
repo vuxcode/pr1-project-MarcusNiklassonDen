@@ -35,4 +35,8 @@
   - tried to fix the square button so it would disable the draw function, i managed to do so butt the draw function did not work after that so i deleted it.
   - very frustrating session.
 
+  - 2023-11-17 worked for 2h+30min
+  - did these 2 h earleier this week but forgot to log it.
+  - 30min workshop in school
+
     
