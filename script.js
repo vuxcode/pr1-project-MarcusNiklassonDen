@@ -5,6 +5,8 @@ canvas.height = window.innerHeight; //sets canvas height to window size
 
 
 //variables
+var state
+//var mouse = mouseListeners
 var isDrawing = false; // sets variable isDrawning to boolian false
 var X  ; //storing x value
 var Y ; // storing y value
@@ -13,15 +15,15 @@ var offsetY; //storing offsetY
 var ctx //storing ctx
 var ctx = canvas.getContext("2d"); // dont really know what this dose but i guess it sets var ctx to be a 2d space?
 var strokeStyle = document.getElementById("colorPicker");//stores the strokeStyle (color)
-var lineWidth = 10;//stores the lineWidth (width of stroke)
-
+var lineWidth = valueTest;//document.getElementById("sliderOutput").value;//stores the lineWidth (width of stroke)
+var test
 
 //button varibles
 var buttonPen = document.getElementById("buttonPen").onclick = draw;
-//var buttonEraser = document.getElementById("buttonEraser").onclick = eraseFunction;
+var buttonEraser = document.getElementById("buttonEraser").onclick = erase;
 var buttonSquare = document.getElementById("buttonSquare").onclick = startSquare;
 var buttonCircle = document.getElementById("buttonCircle").onclick = startCircle;
-//var buttonClear = document.getElementById("buttonClear").onclick = eraseAllFunction;
+var buttonClear = document.getElementById("buttonClear").onclick = clear;
 //console.log(buttonPen)
 
 //sets the stroke atributes
@@ -29,6 +31,32 @@ ctx.strokeStyle = strokeStyle; // sets color of stroke, refers to var strokeStyl
 ctx.lineCap = "round" //sets end to be round
 ctx.lineWidth = lineWidth; //sets width of stroke, refers to var lineWidth
 
+function valueTest(test){
+    document.getElementById("sliderOutput").innerHTML = test;
+}
+
+console.log(test)
+
+
+
+//window.addEventListener("lineSize")
+
+
+function mouseListeners(){
+
+    canvas.addEventListener("mousedown", startDrawing);//Lisening to mousebutton is pressed down and runs startDrawing function
+    canvas.addEventListener("mouseup", stopDrawing);//listening to mousebutton is released and runs stopDrawing function
+    canvas.addEventListener("mousemove", draw);//listening if mouse is moving and runs draw function
+
+}
+
+
+
+
+// function that clears the canvas
+function clear(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
 
 // Function that states that isDrawing is set to true
 function startDrawing(){
@@ -44,14 +72,32 @@ function stopDrawing(){
 
 //Function for Mouse drawing (free drawing)
 function draw(freeDraw){
-    window.addEventListener("mousedown", startDrawing);//Lisening to mousebutton is pressed down and runs startDrawing function
-    window.addEventListener("mouseup", stopDrawing);//listening to mousebutton is released and runs stopDrawing function
-    window.addEventListener("mousemove", draw);//listening if mouse is moving and runs draw function
+    console.log (isDrawing)
+    mouseListeners();
+    if (!isDrawing) return;// if isDrawing not true it runs the function again.
+    
+
+    ctx.strokeStyle = strokeStyle;// gets information from var strokeStyle
+    ctx.lineCap;
+    ctx.lineWidth = lineWidth;// gets information from var lineWidth
+
+    
+    ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//takes cordinates from freeDraw thattakes them from draw that takes them fom mousemove
+    ctx.stroke();//fills the stroke (would like to have this last of the ctx but then it wount fill anything )
+    ctx.beginPath();//starts a new path (would like this on top but then i get dots instead of lines)
+    ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//ends the stroke att these cordinates
+    
+}
+
+
+//Function for Mouse drawing (free drawing)
+function erase(){
+    mouseListeners();
     if (!isDrawing) return;// if isDrawing not true it runs the function again.
     
     
 
-    ctx.strokeStyle = strokeStyle;// gets information from var strokeStyle
+    ctx.strokeStyle =  rgba(0, 0, 0, 0);// gets information from var strokeStyle
     ctx.lineCap;
     ctx.lineWidth = lineWidth;// gets information from var lineWidth
 
@@ -78,7 +124,7 @@ function startSquare (){
 
 //ARC Needs user input and something dosent work as it should
 function startCircle(){
-    ctx.arc(400, 400, 100, 100, Math.PI*2);// creates circle. needs x(300) and y(500) cord from user, button and cords where to start (30).
+    ctx.arc(400, 400, 100, 0, Math.PI*2);// creates circle. needs x(300) and y(500) cord from user, button and cords where to start (30).
     ctx.stroke(); // fill stroke
     ctx.beginPath(); //starts circle
     
