@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+
+        }
+    </style>
+</head>
+<body>
+    <button id="b1">B1</button>
+    <button id="b2">B2</button>
+
+    <canvas id="canvas1"></canvas>
+    
+
+    <script>
+        var canvas = document.getElementById("canvas1");// looking for canvas tag in html document
+        
+        var state
+
+        canvas.width = window.innerWidth; //sets canvas width to window size
+        canvas.height = window.innerHeight; //sets canvas height to window size
+
+        var button1 = document.getElementById("b1").onclick = draw;
+        var button2 = document.getElementById("b2").onclick = clear;
+
+       // var state
+        var isDrawing = false; // sets variable isDrawning to boolian false
+        //var Y ; // storing y value
+        //var X  ; //storing x value
+        var offsetY; //storing offsetY
+        var offsetX; //storing offsetX
+        var ctx = canvas.getContext("2d"); // dont really know what this dose but i guess it sets var ctx to be a 2d space?
+        var ctx //storing ctx
+        var lineWidth = 10;//document.getElementById("sliderOutput").value;//stores the lineWidth (width of stroke)
+        var strokeStyle = document.getElementById("colorPicker");//stores the strokeStyle (color)
+/*
+       function b1(){
+        var state = draw;
+       }
+
+       
+       function b2(){
+        var state = clear;
+       }
+*/            
+
+        function mouseListeners(){
+            canvas.addEventListener("mousedown", startDrawing);//Lisening to mousebutton is pressed down and runs startDrawing function
+            canvas.addEventListener("mouseup", stopDrawing);//listening to mousebutton is released and runs stopDrawing function
+            canvas.addEventListener("mousemove", draw);//listening if mouse is moving and runs draw function
+        }
+
+        
+        function draw(freeDraw){
+            // console.log (isDrawing)
+            mouseListeners();
+            if (!isDrawing) return;// if isDrawing not true it runs the function again.
+
+
+            ctx.strokeStyle = strokeStyle;// gets information from var strokeStyle
+            ctx.lineCap = "round";
+            ctx.lineWidth = lineWidth;// gets information from var lineWidth
+
+    
+            ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//takes cordinates from freeDraw thattakes them from draw that takes them fom mousemove
+            ctx.stroke();//fills the stroke (would like to have this last of the ctx but then it wount fill anything )
+            ctx.beginPath();//starts a new path (would like this on top but then i get dots instead of lines)
+            ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//ends the stroke att these cordinates
+    
+        }
+
+        function clear(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+        }
+
+
+        // Function that states that isDrawing is set to true
+        function startDrawing(){
+            isDrawing = true;
+    
+        }
+
+        // Function that states that isDrawing is set to false and the "Stroke Path" dosent continiue to the next StartDrawing function
+         function stopDrawing(){
+            isDrawing = false;
+            ctx.beginPath();
+        }
+
+        console.log(state)
+    </script>
+    
+</body>
+</html>
