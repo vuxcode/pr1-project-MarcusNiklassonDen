@@ -16,16 +16,18 @@
     <button id="buttonEraser">Eraser</button>
     <button id="buttonSquare">Square</button>
     <button id="buttonCircle">Circle</button>
-    
+    <button id="buttonClear">Erase All</button>
+
+
     <input type="color" id="colorPicker">
-    <input type="range" min="1" max="100" value="50" class="slider" id="lineSize">
-    
-    
-    
+    <input type="range" min="1" max="300" value="10" class="slider" id="lineSize" oninput="valueTest(this.value)">
+    <span id="sliderOutput"></span>
 
     <canvas id="canvas1"></canvas>
+
+    
     <script src="script.js"></script>
     
-    <button id="buttonClear">Erase All</button>
+    
 </body>
 </html>

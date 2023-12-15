@@ -1,153 +1,163 @@
-var canvas = document.getElementById("canvas1");// looking for canvas tag in html document
+var canvas = document.getElementById("canvas1");// fetsching canvas from id tag in html document
 
-canvas.width = window.innerWidth; //sets canvas width to window size
-canvas.height = window.innerHeight; //sets canvas height to window size
 
+canvas.width = window.innerWidth;//sets canvas width to window size
+canvas.height = window.innerHeight;//sets canvas height to window size
 
 //variables
-var state
-//var mouse = mouseListeners
-var isDrawing = false; // sets variable isDrawning to boolian false
-var X  ; //storing x value
-var Y ; // storing y value
-var offsetX; //storing offsetX
-var offsetY; //storing offsetY
-var ctx //storing ctx
-var ctx = canvas.getContext("2d"); // dont really know what this dose but i guess it sets var ctx to be a 2d space?
-var strokeStyle = document.getElementById("colorPicker");//stores the strokeStyle (color)
-var lineWidth = valueTest;//document.getElementById("sliderOutput").value;//stores the lineWidth (width of stroke)
-var test
+var ctx = canvas.getContext("2d");// sets ctx to be a 2d space 
+var state = null;// stores the difrent states
+var isDrawing = false;// sets variable isDrawning to boolian false
+var strokeStyle = document.getElementById("colorPicker").value;//gets the value from colorPicker id in HTML code and stores it
+var lineWidth = document.getElementById("lineSize").value;//gets the value from lineSize id in HTML code and stores it
 
-//button varibles
-var buttonPen = document.getElementById("buttonPen").onclick = draw;
-var buttonEraser = document.getElementById("buttonEraser").onclick = erase;
-var buttonSquare = document.getElementById("buttonSquare").onclick = startSquare;
-var buttonCircle = document.getElementById("buttonCircle").onclick = startCircle;
-var buttonClear = document.getElementById("buttonClear").onclick = clear;
-//console.log(buttonPen)
-
-//sets the stroke atributes
-ctx.strokeStyle = strokeStyle; // sets color of stroke, refers to var strokeStyle
-ctx.lineCap = "round" //sets end to be round
-ctx.lineWidth = lineWidth; //sets width of stroke, refers to var lineWidth
-
-function valueTest(test){
-    document.getElementById("sliderOutput").innerHTML = test;
+//sets the stroke atributes in a function
+function setDrawingParameters() {
+    ctx.strokeStyle = strokeStyle;// sets color of stroke, refers to var strokeStyle
+    ctx.lineWidth = lineWidth;//sets width of stroke to var lineWidth
+    ctx.lineCap = "round";//sets end to be round
 }
-
-console.log(test)
-
-
-
-//window.addEventListener("lineSize")
-
-
-function mouseListeners(){
-
-    canvas.addEventListener("mousedown", startDrawing);//Lisening to mousebutton is pressed down and runs startDrawing function
-    canvas.addEventListener("mouseup", stopDrawing);//listening to mousebutton is released and runs stopDrawing function
-    canvas.addEventListener("mousemove", draw);//listening if mouse is moving and runs draw function
-
-}
-
-
-
 
 // function that clears the canvas
-function clear(){
+function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 // Function that states that isDrawing is set to true
-function startDrawing(){
+function startDrawing() {
     isDrawing = true;
-    
 }
 
 // Function that states that isDrawing is set to false and the "Stroke Path" dosent continiue to the next StartDrawing function
-function stopDrawing(){
+function stopDrawing() {
     isDrawing = false;
     ctx.beginPath();
 }
 
 //Function for Mouse drawing (free drawing)
-function draw(freeDraw){
-    console.log (isDrawing)
-    mouseListeners();
-    if (!isDrawing) return;// if isDrawing not true it runs the function again.
-    
+function draw(freeDraw) {
+    if (!isDrawing) return;// if isDrawing not true and pen state not pen it runs the function again.
 
-    ctx.strokeStyle = strokeStyle;// gets information from var strokeStyle
-    ctx.lineCap;
-    ctx.lineWidth = lineWidth;// gets information from var lineWidth
+    setDrawingParameters();//runs function
 
-    
-    ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//takes cordinates from freeDraw thattakes them from draw that takes them fom mousemove
-    ctx.stroke();//fills the stroke (would like to have this last of the ctx but then it wount fill anything )
-    ctx.beginPath();//starts a new path (would like this on top but then i get dots instead of lines)
-    ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//ends the stroke att these cordinates
-    
-}
+    if (state === "pen") { //checks if state and pen is exactly true
+        startPen(freeDraw.offsetX, freeDraw.offsetY);
+       // ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//end poin in if 
+        //ctx.stroke();//fills line in if
+        //ctx.beginPath();//starts a line in if
+        //ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//starting point in if
 
+    } 
+    else if (state === "eraser") {//checks if state and eraser is exactly true
+        startEraser(freeDraw.offsetX, freeDraw.offsetY);
 
-//Function for Mouse drawing (free drawing)
-function erase(){
-    mouseListeners();
-    if (!isDrawing) return;// if isDrawing not true it runs the function again.
-    
-    
+    } 
+    else if (state === "square") {//checks if state and square is exactly true
+        drawSquare(freeDraw.offsetX, freeDraw.offsetY);// runs function with paremeter
 
-    ctx.strokeStyle =  rgba(0, 0, 0, 0);// gets information from var strokeStyle
-    ctx.lineCap;
-    ctx.lineWidth = lineWidth;// gets information from var lineWidth
+    } 
+    else if (state === "circle") {//checks if state and circle is exactly true
+        drawCircle(freeDraw.offsetX, freeDraw.offsetY);// runs function with paremeter
 
-    
-    ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//takes cordinates from freeDraw thattakes them from draw that takes them fom mousemove
-    ctx.stroke();//fills the stroke (would like to have this last of the ctx but then it wount fill anything )
-    ctx.beginPath();//starts a new path (would like this on top but then i get dots instead of lines)
-    ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//ends the stroke att these cordinates
-    
-}
+    } 
+    else if (state === "clear") {//checks if state and clear is exactly true
+        clearCanvas();// runs function
+    }
+    else {
 
-        
-
-
-// SQUARE Needs user input
-function startSquare (){
-    stopDrawing
-    ctx.beginPath(); //starts square
-    ctx.fillStyle = strokeStyle; //color select. needs user input
-    ctx.fillRect(100, 100, 100, 100);
-    ctx.stroke();
+        ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//end poin
+        ctx.stroke();//fills line
+        ctx.beginPath();//starts
+        ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//starting point
+    }
 
 }
 
-//ARC Needs user input and something dosent work as it should
-function startCircle(){
-    ctx.arc(400, 400, 100, 0, Math.PI*2);// creates circle. needs x(300) and y(500) cord from user, button and cords where to start (30).
-    ctx.stroke(); // fill stroke
-    ctx.beginPath(); //starts circle
-    
-    ctx.strokeStyle;//color select
-    
+
+//pen function
+function startPen(x, y) {
+        setDrawingParameters();// runs function
+        ctx.lineTo(x, y);//end poin in if 
+        ctx.stroke();//fills line in if
+        ctx.beginPath();//starts a line in if
+        ctx.moveTo(x, y);//starting point in if
 }
 
+//pen function
+function startEraser(x, y) {
+    strokeStyle = "#ffffff";
+    setDrawingParameters();// runs function
+    ctx.lineTo(x, y);//end poin in if 
+    ctx.stroke();//fills line in if
+    ctx.beginPath();//starts a line in if
+    ctx.moveTo(x, y);//starting point in if
+}
+
+//square function
+function drawSquare(x, y) {
+    setDrawingParameters();// runs function
+    ctx.beginPath();
+    ctx.strokeRect (x, y, 100, 100);//sets size and cords
+    ctx.stroke();//fills square
+    ctx.closePath();
+}
+
+//circle function
+function drawCircle(x, y) {
+    setDrawingParameters();// runs function
+    ctx.beginPath();
+    ctx.arc(x, y, 50, 0, Math.PI * 2);//sets size and cords
+    ctx.stroke();//fills circle
+    ctx.closePath();
+}
+
+// displayes the slider value 1 to 100
+function valueTest(test){
+    document.getElementById("sliderOutput").innerHTML = test;
+}
+
+// mouse listeners 
+canvas.addEventListener("mousedown", startDrawing);//when mous button is pressed runs function
+canvas.addEventListener("mouseup", stopDrawing);//when mouse button is relesed runs function
+canvas.addEventListener("mousemove", draw);//when mouse is moving runs function
+
+//button listeners
+document.getElementById("buttonPen").addEventListener("click", function () {//gets button from HTML by id tag and runs function
+    state = "pen";//sets var state
+});
+
+document.getElementById("buttonEraser").addEventListener("click", function () {//gets button from HTML by id tag and runs function
+    state = "eraser";//sets var state
+    startEraser();
+});
+
+document.getElementById("buttonSquare").addEventListener("click", function () { //gets button from HTML by id tag and runs function
+    state = "square";//sets var state
+    drawSquare();
+
+});
+
+document.getElementById("buttonCircle").addEventListener("click", function () {//gets button from HTML by id tag and runs function
+    state = "circle";//sets var state
+    drawCircle();
+
+});
+
+document.getElementById("buttonClear").addEventListener("click", function () {//gets button from HTML by id tag and runs function
+    state = "clear";//sets var state
+    clearCanvas();//runs function
+});
 
 
-/*
-//LINE
-ctx.beginPath(); //starts a line
-ctx.moveTo(x, y); //starting point.needs user input to change the x and y cord.needs button to activate 
-ctx.lineTo(x, y);//end point
-ctx.strokeStyle = "hexCode or css";// color select.needs input from user
-ctx.strokeStyle = "cap";
-ctx.stroke();//fills line
-*/
+// colorPicker eventListener
+document.getElementById("colorPicker").addEventListener("input", function (color) { //listens for a input in the colorPicker
+    strokeStyle = this.value; // Update var strokeStyle to the new color value
+    
+});
 
-
-
-
-
-
-
-console.log(canvas)
+// Slider eventListener
+document.getElementById("lineSize").addEventListener("input", function (Thikness) { //listens for a input in the sliderOutput
+    lineWidth = this.value; // Update var lineWidth to the new slider value
+    ctx.lineWidth = lineWidth;
+    
+});
