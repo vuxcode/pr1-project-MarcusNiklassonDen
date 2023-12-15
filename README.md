@@ -1,20 +1,24 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/knTkeOvY)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12604255&assignment_repo_type=AssignmentRepo)
-# Project Instructions
-Follow the instructions here: https://vuxcode.netlify.app/new/pr1/lessons/major-project-brief/
-
-REMEMBER TO "COMMIT" YOUR CHANGES REGULARLY TO SHOW HOW YOU HAVE BUILT THIS PROJECT! 
-
-The final program is not the goal! The aim of the project is to show how you have developed your program, the steps you have taken and the problems you have solved!
-
-# Project Notes
-
-> You can use this section of the file to keep notes about your project as you work on it.
 
 # Project Summary
-
-> Before the final submission date you should include a "PROJECT SUMMARY" in this section here. 
+ 
+> This project has been very difficult and very frustrating. If I managed to fix one thing, another one broke.
+> The project is far from complete but I have learned a lot and will continue to develop my coding skills after the course is done.
+> Even if I'm not completely done with the project I feel a slight satisfaction that I managed to make something using code, a language I knew nothing about 5 months ago.
 
 # User Guide
 
-> Write a clear user guide for how someone should use your program.
+> Use the "Pen tool" to draw freely on the canvas.
+> 
+> Use the "Erase Tool" to erase.
+> 
+> Use the "Square Tool" to paint with squares.
+> 
+> Use the "Circle Tool" to paint with circles.
+>
+> Use the "Erase All Toll" to clear the canvas.
+> 
+> You can use the Color picker to change the color of the various tools.
+> 
+> You can use the Slider to set the width of the tools.
+> 
+> Right click and press "Save as" to save the canvas as an image.
