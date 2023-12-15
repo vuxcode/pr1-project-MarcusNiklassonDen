@@ -182,13 +182,16 @@ function clearState() {
 
 // Function to manage drawing based on the state
 function handleDrawing() {
-    if (state === "pen") {// checks if state is exactly pen 
-    } else if (state === "eraser") {    
-    } else if (state === "square") {   
+    if (state === "pen") {// checks if state is exactly pen
+        //pen function
+    } else if (state === "eraser") {
+        // eraser function    
+    } else if (state === "square") {
+        //square function   
     } else if (state === "circle") {
-        // Execute actions for drawing a circle
+        // circle function
     } else if (state === "clear") {
-        clear(); 
+        clear(); // erase all function
     }
 }
 
