@@ -42,7 +42,7 @@
 
   - 2023-11-15
   - worked for 1h
-  - edited comments and did some minor spellchecking, uploaded everything, filled out the readme.md, bug.md and time-report.md 
+  - edited comments and did some minor spellchecking, uploaded everything, filled out the readme.md, bug.md and time-report.md (its now 04:40 in the morning... i give up X)
 
   - total around 27h
 
