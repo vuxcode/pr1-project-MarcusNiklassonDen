@@ -1,11 +1,5 @@
 # Time Report
 
-> Write about what you have done and how long you have worked on each part of the project.
-
-
-
-
- 
   - 2023-10-25 worked for 3h
   - started learning canvas
     
@@ -46,6 +40,10 @@
   - worked for 8h and 20min
   - rewrote the whole script 2 times, made all butons work but it still dosent work as i want. managed to get the value of the colorpicker and the slider to work. cleand upp alot of the code so its easyer to make sens of it now.
 
-  - total around 26h
+  - 2023-11-15
+  - worked for 1h
+  - edited comments and did some minor spellchecking, uploaded everything, filled out the readme.md, bug.md and time-report.md 
+
+  - total around 27h
 
     
