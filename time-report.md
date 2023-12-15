@@ -39,4 +39,13 @@
   - did these 2 h earleier this week but forgot to log it.
   - 30min workshop in school
 
+  - 2023-11-somtime around the 5th
+  - worked for 2h
+
+  - 2023-11 14-15
+  - worked for 8h and 20min
+  - rewrote the whole script 2 times, made all butons work but it still dosent work as i want. managed to get the value of the colorpicker and the slider to work. cleand upp alot of the code so its easyer to make sens of it now.
+
+  - total around 26h
+
     
