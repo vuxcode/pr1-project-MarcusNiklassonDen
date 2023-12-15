@@ -37,19 +37,16 @@ function stopDrawing() {
 //Function for Mouse drawing (free drawing)
 function draw(freeDraw) {
     if (!isDrawing) return;// if isDrawing not true and pen state not pen it runs the function again.
-
     setDrawingParameters();//runs function
-
     if (state === "pen") { //checks if state and pen is exactly true
-        startPen(freeDraw.offsetX, freeDraw.offsetY);
+        startPen(freeDraw.offsetX, freeDraw.offsetY);// runs function
        // ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//end poin in if 
         //ctx.stroke();//fills line in if
         //ctx.beginPath();//starts a line in if
         //ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//starting point in if
-
     } 
     else if (state === "eraser") {//checks if state and eraser is exactly true
-        startEraser(freeDraw.offsetX, freeDraw.offsetY);
+        startEraser(freeDraw.offsetX, freeDraw.offsetY);//runs function
 
     } 
     else if (state === "square") {//checks if state and square is exactly true
@@ -64,13 +61,11 @@ function draw(freeDraw) {
         clearCanvas();// runs function
     }
     else {
-
         ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//end poin
         ctx.stroke();//fills line
-        ctx.beginPath();//starts
+        ctx.beginPath();//starts path
         ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//starting point
     }
-
 }
 
 
@@ -85,7 +80,7 @@ function startPen(x, y) {
 
 //pen function
 function startEraser(x, y) {
-    strokeStyle = "#ffffff";
+    strokeStyle = "#ffffff";// sets color to white
     setDrawingParameters();// runs function
     ctx.lineTo(x, y);//end poin in if 
     ctx.stroke();//fills line in if
@@ -134,13 +129,11 @@ document.getElementById("buttonEraser").addEventListener("click", function () {/
 document.getElementById("buttonSquare").addEventListener("click", function () { //gets button from HTML by id tag and runs function
     state = "square";//sets var state
     drawSquare();
-
 });
 
 document.getElementById("buttonCircle").addEventListener("click", function () {//gets button from HTML by id tag and runs function
     state = "circle";//sets var state
     drawCircle();
-
 });
 
 document.getElementById("buttonClear").addEventListener("click", function () {//gets button from HTML by id tag and runs function
@@ -151,13 +144,11 @@ document.getElementById("buttonClear").addEventListener("click", function () {//
 
 // colorPicker eventListener
 document.getElementById("colorPicker").addEventListener("input", function (color) { //listens for a input in the colorPicker
-    strokeStyle = this.value; // Update var strokeStyle to the new color value
-    
+    strokeStyle = this.value; // Update var strokeStyle to the new color value   
 });
 
 // Slider eventListener
 document.getElementById("lineSize").addEventListener("input", function (Thikness) { //listens for a input in the sliderOutput
     lineWidth = this.value; // Update var lineWidth to the new slider value
-    ctx.lineWidth = lineWidth;
-    
+    ctx.lineWidth = lineWidth;   
 });

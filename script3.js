@@ -23,15 +23,13 @@ ctx.lineWidth = lineWidth; //sets width of stroke to var lineWidth
 
 // colorPicker eventListener
 document.getElementById("colorPicker").addEventListener("input", function (color) { //listens for a input in the colorPicker
-    strokeStyle = this.value; // Update var strokeStyle to the new color value
-    
+    strokeStyle = this.value; // Update var strokeStyle to the new color value    
 });
 
 // Slider eventListener
 document.getElementById("lineSize").addEventListener("input", function (Thikness) { //listens for a input in the sliderOutput
     lineWidth = this.value; // Update var lineWidth to the new slider value
-    ctx.lineWidth = lineWidth;
-    
+    ctx.lineWidth = lineWidth;   
 });
 
 //button varibles
@@ -48,22 +46,18 @@ buttonPen.addEventListener("click", function () {
 
 buttonEraser.addEventListener("click", function () {
     state = "eraser";
-
 });
 
 buttonSquare.addEventListener("click", function () {
     state = "square";
-
 });
 
 buttonCircle.addEventListener("click", function () {
     state = "circle";
-
 });
 
 buttonClear.addEventListener("click", function () {
     state = "clear";
-
     clear();
 });
 
@@ -73,17 +67,11 @@ function clear(){
     
 }
 
-
-
-   
 function mouseListeners() {
     canvas.addEventListener("mousedown", startDrawing);//Lisening to mousebutton is pressed down and runs startDrawing function
     canvas.addEventListener("mouseup", stopDrawing);//listening to mousebutton is released and runs stopDrawing function
     canvas.addEventListener("mousemove", draw);//listening if mouse is moving and runs draw function
-    
-
 }
-
 
 // Function that states that isDrawing is set to true
 function startDrawing(){
@@ -146,27 +134,23 @@ function valueTest(test){
 
 
 /*
-"
 function drawState() {
     if (state === "pen") {// checks if state is the same as pen
     }
 }
 
 function eraseState() {
-    if (state === "eraser") {
-        
+    if (state === "eraser") {       
     }
 }
 
 function squareState() {
-    if (state === "square") {
-        
+    if (state === "square") {      
     }
 }
 
 function circleState() {
-    if (state === "circle") {
-        
+    if (state === "circle") {   
     }
 }
 
@@ -178,40 +162,29 @@ function clearState() {
 
 function drawState() {
     var state = draw();
-
 }
 
 function eraseState() {
     var state = erase();
-
 }
-
 
 function squareState() {
     var state = startSquare();
-
 }
-
 
 function circleState() {
     var state = startCircle();
-
 }
-
 
 function clearState() {
     var state = clear();
-
 }
 
 // Function to manage drawing based on the state
 function handleDrawing() {
-    if (state === "pen") {// checks if state is exactly pen
-    
-    } else if (state === "eraser") {
-        
-    } else if (state === "square") {
-        
+    if (state === "pen") {// checks if state is exactly pen 
+    } else if (state === "eraser") {    
+    } else if (state === "square") {   
     } else if (state === "circle") {
         // Execute actions for drawing a circle
     } else if (state === "clear") {
@@ -219,41 +192,22 @@ function handleDrawing() {
     }
 }
 
-
-
-
 /*
 function stopPen(){
     isDrawing = false;
 }
-*/
 
-
-
-
-
-
-
-
-/*
 //Function for Mouse drawing (free drawing)
 function erase(){
     mouseListeners();
-
     if (!isDrawing) return;// if isDrawing not true it runs the function again.
-    
-    
-
     ctx.strokeStyle =  rgba(0, 0, 0, 0);// gets information from var strokeStyle
     ctx.lineCap;
-    ctx.lineWidth = lineWidth;// gets information from var lineWidth
-
-    
+    ctx.lineWidth = lineWidth;// gets information from var lineWidth   
     ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//takes cordinates from freeDraw thattakes them from draw that takes them fom mousemove
     ctx.stroke();//fills the stroke (would like to have this last of the ctx but then it wount fill anything )
     ctx.beginPath();//starts a new path (would like this on top but then i get dots instead of lines)
-    ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//ends the stroke att these cordinates
-    
+    ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);//ends the stroke att these cordinates    
 }
 */
         
