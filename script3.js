@@ -43,26 +43,26 @@ var buttonClear = document.getElementById("buttonClear");// removed .onclick and
 
 // Button event listeners
 buttonPen.addEventListener("click", function () {
-    state = 'pen';
+    state = "pen";
 });
 
 buttonEraser.addEventListener("click", function () {
-    state = 'eraser';
+    state = "eraser";
 
 });
 
 buttonSquare.addEventListener("click", function () {
-    state = 'square';
+    state = "square";
 
 });
 
 buttonCircle.addEventListener("click", function () {
-    state = 'circle';
+    state = "circle";
 
 });
 
 buttonClear.addEventListener("click", function () {
-    state = 'clear';
+    state = "clear";
 
     clear();
 });
@@ -105,22 +105,12 @@ function draw(freeDraw){
     ctx.strokeStyle = strokeStyle;// gets information from var strokeStyle
     ctx.lineWidth = lineWidth;// gets information from var lineWidth
 
-    if (state === 'pen') {
+    if (state === "pen") {
         ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);
         ctx.stroke();
         ctx.beginPath();
         ctx.moveTo(freeDraw.offsetX, freeDraw.offsetY);
         
-    } else if (state === 'eraser') {
-        // Your eraser logic here
-    } else if (state === 'square') {
-        startSquare();
-    } else if (state === 'circle') {
-        startCircle();
-    } else if (state === 'clear') {
-        clear();
-    }
-    
     ctx.lineTo(freeDraw.offsetX, freeDraw.offsetY);//takes cordinates from freeDraw thattakes them from draw that takes them fom mousemove
     ctx.stroke();//fills the stroke (would like to have this last of the ctx but then it wount fill anything )
     ctx.beginPath();//starts a new path (would like this on top but then i get dots instead of lines)
@@ -156,32 +146,32 @@ function valueTest(test){
 
 
 /*
-
+"
 function drawState() {
-    if (state === 'pen') {// checks if state is the same as pen
+    if (state === "pen") {// checks if state is the same as pen
     }
 }
 
 function eraseState() {
-    if (state === 'eraser') {
+    if (state === "eraser") {
         
     }
 }
 
 function squareState() {
-    if (state === 'square') {
+    if (state === "square") {
         
     }
 }
 
 function circleState() {
-    if (state === 'circle') {
+    if (state === "circle") {
         
     }
 }
 
 function clearState() {
-    if (state === 'clear') {
+    if (state === "clear") {
         clear();
     }
 }
@@ -216,16 +206,16 @@ function clearState() {
 
 // Function to manage drawing based on the state
 function handleDrawing() {
-    if (state === "pen") {
-        // Execute drawing actions specific to the pen
+    if (state === "pen") {// checks if state is exactly pen
+    
     } else if (state === "eraser") {
-        // Execute eraser actions
+        
     } else if (state === "square") {
-        // Execute actions for drawing a square
+        
     } else if (state === "circle") {
         // Execute actions for drawing a circle
     } else if (state === "clear") {
-        clear(); // This will only clear the canvas if the state is set to 'clear'
+        clear(); 
     }
 }
 
